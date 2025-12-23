@@ -2,62 +2,178 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AM Digital Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AM Digital Services – App-Entwicklung</title>
+
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #222; }
-    header, section, footer { max-width: 800px; margin: auto; padding: 20px; }
-    header { background-color: #22C55E; color: white; text-align: center; padding: 40px 20px; }
-    h1 { margin: 0 0 10px; }
-    h2 { color: #15803D; }
-    a { color: #15803D; text-decoration: none; }
-    footer { font-size: 0.9em; text-align: center; color: #777; margin-top: 40px; }
+    :root {
+      --primary: #22c55e;
+      --primary-dark: #15803d;
+      --bg: #f8fafc;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    header p {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+
+    section h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--primary-dark);
+      font-size: 1.4rem;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    a {
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 16px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .company-data {
+      margin-top: 16px;
+      font-size: 0.95rem;
+    }
+
+    .company-data strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      section {
+        padding: 24px;
+      }
+    }
   </style>
 </head>
-<body>
 
+<body>
   <header>
     <h1>AM Digital Services</h1>
     <p>App-Entwicklung & digitale Lösungen</p>
   </header>
 
-  <section>
-    <h2>Über uns</h2>
-    <p>AM Digital Services entwickelt moderne, benutzerfreundliche Apps und digitale Produkte – spezialisiert auf Alltagstools, Organisationslösungen und individuelle Softwarelösungen für Privatpersonen und Unternehmen.</p>
-  </section>
+  <main>
+    <section>
+      <h2>Über uns</h2>
+      <p>
+        AM Digital Services entwickelt moderne, benutzerfreundliche Apps und
+        digitale Produkte. Der Fokus liegt auf klaren, zuverlässigen
+        Softwarelösungen für Alltag, Organisation und individuelle
+        Anforderungen.
+      </p>
+      <p>
+        Unsere Anwendungen zeichnen sich durch eine einfache Bedienung,
+        saubere Architektur und langfristige Wartbarkeit aus.
+      </p>
+    </section>
 
-  <section>
-    <h2>Datenschutzerklärung</h2>
-    <p>Diese Website erhebt keine personenbezogenen Daten. Für unsere Apps gelten gesonderte Datenschutzerklärungen innerhalb der jeweiligen App-Stores bzw. in der App selbst.</p>
-    <p>Verantwortlich für den Datenschutz:</p>
-    <p>
-      <strong>AM Digital Services</strong><br/>
-      Amin Moukhmalji<br/>
-      Buschgasse 36<br/>
-      53332 Bornheim<br/>
-      Deutschland<br/>
-      E-Mail: <a href="mailto:a.moukhmalji@gmx.de">a.moukhmalji@gmx.de</a>
-    </p>
-  </section>
+    <section>
+      <h2>Datenschutzerklärung</h2>
+      <p>
+        Diese Website erhebt keine personenbezogenen Daten. Für unsere Apps
+        gelten gesonderte Datenschutzerklärungen innerhalb der jeweiligen
+        App-Stores bzw. in der App selbst.
+      </p>
 
-  <section>
-    <h2>Impressum</h2>
-    <p>Angaben gemäß § 5 TMG:</p>
-    <p>
-      <strong>AM Digital Services</strong><br/>
-      Inhaber: Amin Moukhmalji<br/>
-      Buschgasse 36<br/>
-      53332 Bornheim<br/>
-      Deutschland<br/>
-      E-Mail: <a href="mailto:a.moukhmalji@gmx.de">a.moukhmalji@gmx.de</a>
-    </p>
-    <p>Keine Umsatzsteuer-ID gemäß § 19 UStG (Kleinunternehmerregelung)</p>
-  </section>
+      <div class="company-data">
+        <strong>Verantwortlich für den Datenschutz</strong>
+        AM Digital Services<br />
+        Amin Moukhmalji<br />
+        Buschgasse 36<br />
+        53332 Bornheim<br />
+        Deutschland<br />
+        E-Mail:
+        <a href="mailto:a.moukhmalji@gmx.de">a.moukhmalji@gmx.de</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Impressum</h2>
+      <p>Angaben gemäß § 5 TMG:</p>
+
+      <div class="company-data">
+        <strong>AM Digital Services</strong>
+        Inhaber: Amin Moukhmalji<br />
+        Buschgasse 36<br />
+        53332 Bornheim<br />
+        Deutschland<br />
+        E-Mail:
+        <a href="mailto:a.moukhmalji@gmx.de">a.moukhmalji@gmx.de</a>
+      </div>
+
+      <p>
+        Keine Umsatzsteuer-ID gemäß § 19 UStG
+        (Kleinunternehmerregelung)
+      </p>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 AM Digital Services
+    © 2025 AM Digital Services
   </footer>
-
 </body>
 </html>
-
