@@ -5,118 +5,168 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AM Digital Services – App-Entwicklung</title>
 
-  <style>
-    :root {
-      --primary: #1f2937;        /* Dunkles Blau-Grau */
-      --primary-soft: #334155;   /* Sekundär */
-      --accent: #2563eb;         /* Dezentes Blau */
-      --bg: #f3f4f6;             /* Hellgrau */
-      --card: #ffffff;
-      --text: #111827;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-    }
+<style>
+  :root {
+    --primary: #1f2937;        /* Dunkles Blau-Grau */
+    --primary-soft: #334155;   /* Sekundär */
+    --accent: #2563eb;         /* Dezentes Blau */
+    --bg: #f3f4f6;             /* Hellgrau */
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+  }
 
-    * {
-      box-sizing: border-box;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
 
-    header {
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary-soft)
-      );
-      color: #ffffff;
-      padding: 72px 24px;
-      text-align: center;
-    }
+  header {
+    background: linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary-soft)
+    );
+    color: #ffffff;
+    padding: 72px 24px;
+    text-align: center;
+  }
 
+  header h1 {
+    margin: 0;
+    font-size: 2.3rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+
+  header p {
+    margin-top: 12px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 20px;
+  }
+
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 36px;
+    margin-bottom: 36px;
+  }
+
+  section h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 1.45rem;
+    color: var(--primary);
+  }
+
+  p {
+    margin: 0 0 14px;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .company-data {
+    margin-top: 18px;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  .company-data strong {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  /* Apps & Projekte */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .app-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    background: #fafafa;
+  }
+
+  .app-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.1rem;
+    color: var(--primary);
+  }
+
+  .app-card p {
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  .status {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  .status.live {
+    background: #e0f2fe;
+    color: #0369a1;
+  }
+
+  .status.beta {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .status.dev {
+    background: #ede9fe;
+    color: #5b21b6;
+  }
+
+  footer {
+    text-align: center;
+    padding: 36px 16px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 600px) {
     header h1 {
-      margin: 0;
-      font-size: 2.3rem;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-    }
-
-    header p {
-      margin-top: 12px;
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 48px 20px;
+      font-size: 1.9rem;
     }
 
     section {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 36px;
-      margin-bottom: 36px;
+      padding: 26px;
     }
-
-    section h2 {
-      margin-top: 0;
-      margin-bottom: 18px;
-      font-size: 1.45rem;
-      color: var(--primary);
-    }
-
-    p {
-      margin: 0 0 14px;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .company-data {
-      margin-top: 18px;
-      font-size: 0.95rem;
-      color: var(--text);
-    }
-
-    .company-data strong {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    footer {
-      text-align: center;
-      padding: 36px 16px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.9rem;
-      }
-
-      section {
-        padding: 26px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 
 <body>
@@ -138,6 +188,45 @@
         Produktivität und individuelle digitale Anforderungen.
       </p>
     </section>
+
+    <section>
+  <h2>Apps & Projekte</h2>
+
+  <p>
+    AM Digital Services entwickelt eigenständige Apps sowie interne
+    Softwarelösungen mit Fokus auf Alltagstauglichkeit, Struktur und
+    langfristige Wartbarkeit.
+  </p>
+
+  <div class="apps-grid">
+    <div class="app-card">
+      <h3>FamilyPilot</h3>
+      <p>
+        Organisations-App für Familien mit Kalender, Aufgaben,
+        Einkaufslisten und gemeinsamer Planung.
+      </p>
+      <span class="status live">Status: In Entwicklung</span>
+    </div>
+
+    <div class="app-card">
+      <h3>TodoFox</h3>
+      <p>
+        Schlanke To-Do-App mit Fokus auf Übersicht, einfache Bedienung
+        und klare Priorisierung.
+      </p>
+      <span class="status beta">Status: Beta</span>
+    </div>
+
+    <div class="app-card">
+      <h3>Tips AI</h3>
+      <p>
+        Analyse-Tool für Sportereignisse zur statistischen Auswertung
+        und Entscheidungsunterstützung. Kein Echtgeld, keine Wetten.
+      </p>
+      <span class="status dev">Status: Interne Entwicklung</span>
+    </div>
+  </div>
+</section>
 
     <section>
       <h2>Datenschutzerklärung</h2>
