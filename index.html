@@ -3,16 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AM Digital Services – App-Entwicklung</title>
-
+  <meta
+    name="description"
+    content="AM Digital Services entwickelt moderne Apps und Webanwendungen. Digitale Lösungen mit Fokus auf saubere Umsetzung, modernes UI und wartbare Software."
+  />
+  <title>AM Digital Services – Digitale Lösungen</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <header>
-    <div class="header-bar">
-      <h1>AM Digital Services</h1>
-      <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-controls="site-menu" aria-expanded="false">
+  <header class="site-header">
+    <div class="container nav-bar">
+      <div class="brand">AM Digital Services</div>
+      <nav class="site-nav" id="site-menu" aria-label="Hauptnavigation">
+        <a href="#projekte">Projekte</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Menü öffnen"
+        aria-controls="site-menu"
+        aria-expanded="false"
+      >
         <span class="menu-icon" aria-hidden="true">
           <span></span>
           <span></span>
@@ -20,87 +34,181 @@
         </span>
       </button>
     </div>
-    <p>App-Entwicklung & digitale Lösungen</p>
-    <nav class="site-menu" id="site-menu" aria-label="Seitenmenü">
-      <h2>Menü</h2>
-      <a href="kontakt.html">Kontakt</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="impressum.html">Impressum</a>
-    </nav>
-    <div class="menu-backdrop" data-menu-close></div>
   </header>
+  <div class="menu-backdrop" data-menu-close></div>
 
   <main>
-    <section>
-      <h2>Über uns</h2>
-      <p>
-        AM Digital Services entwickelt moderne, zuverlässige Apps und digitale
-        Produkte mit Fokus auf Klarheit, Benutzerfreundlichkeit und nachhaltige
-        Softwarearchitektur.
-      </p>
-      <p>
-        Der Schwerpunkt liegt auf hochwertigen Lösungen für Organisation,
-        Produktivität und individuelle digitale Anforderungen.
-      </p>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <h1>Digitale Lösungen. Moderne Apps.</h1>
+          <p>
+            App- und Webentwicklung für Unternehmen und digitale Produkte.
+            Klar, performant und zuverlässig umgesetzt.
+          </p>
+          <a class="btn btn-primary" href="#kontakt">Kontakt aufnehmen</a>
+        </div>
+        <div class="hero-card reveal">
+          <h3>Fokus</h3>
+          <ul class="hero-list">
+            <li>Mobile Apps für iOS und Android</li>
+            <li>Webanwendungen mit sauberer Architektur</li>
+            <li>Wartbare, skalierbare Systeme</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section>
-  <h2>Apps & Projekte</h2>
-
-  <p>
-    AM Digital Services entwickelt eigenständige Apps sowie interne
-    Softwarelösungen mit Fokus auf Alltagstauglichkeit, Struktur und
-    langfristige Wartbarkeit.
-  </p>
-
-  <div class="apps-grid">
-    <div class="app-card">
-      <div class="app-title">
-        <img src="assets/Todofox.png" alt="TodoFox Logo" />
-        <h3>TodoFox</h3>
+    <section class="section" id="leistungen">
+      <div class="container">
+        <h2 class="section-title reveal">Leistungen</h2>
+        <p class="section-lead reveal">
+          Umsetzung von digitalen Produkten mit klarer Struktur, modernen
+          Interfaces und einer technischen Basis, die langfristig trägt.
+        </p>
+        <div class="card-grid">
+          <article class="card reveal">
+            <h3>App-Entwicklung</h3>
+            <p>
+              Native und Cross-Platform Apps mit Fokus auf iOS & Android sowie
+              konsistenter User Experience.
+            </p>
+          </article>
+          <article class="card reveal">
+            <h3>Web-Entwicklung</h3>
+            <p>
+              Moderne, performante und responsive Websites mit klarer
+              Informationsstruktur.
+            </p>
+          </article>
+          <article class="card reveal">
+            <h3>Digitale Lösungen</h3>
+            <p>
+              Individuelle Tools, Interfaces und Workflows, angepasst an reale
+              Prozesse und Anforderungen.
+            </p>
+          </article>
+        </div>
       </div>
-      <p>
-        Schlanke To-Do-App mit Fokus auf Übersicht, einfache Bedienung
-        und klare Priorisierung.
-      </p>
-      <a
-        class="app-store-badge"
-        href="https://apps.apple.com/us/app/todo-fox-aufgabenliste/id6755613811"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src="assets/IMG_2278.png"
-          alt="Laden im App Store"
-        />
-      </a>
-    </div>
+    </section>
 
-    <div class="app-card">
-      <h3>FamilyPilot</h3>
-      <p>
-        Organisations-App für Familien mit Kalender, Aufgaben,
-        Einkaufslisten und gemeinsamer Planung.
-      </p>
-      <span class="status live">Status: In Entwicklung</span>
-    </div>
+    <section class="section" id="projekte">
+      <div class="container">
+        <h2 class="section-title reveal">Projekte</h2>
+        <p class="section-lead reveal">
+          Eine Auswahl aktueller Arbeiten und digitaler Produkte. Details und
+          Projektverläufe auf Anfrage.
+        </p>
+        <div class="card-grid">
+          <article class="card reveal">
+            <h3>TodoFox</h3>
+            <p>Schlanke Aufgaben-App für klare Priorisierung und Fokus.</p>
+            <div class="tags">
+              <span class="tag">iOS</span>
+              <span class="tag">Swift</span>
+              <span class="tag">Produktivität</span>
+            </div>
+            <div style="margin-top: 20px;">
+              <a
+                class="btn btn-secondary"
+                href="https://apps.apple.com/us/app/todo-fox-aufgabenliste/id6755613811"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Projekt ansehen
+              </a>
+            </div>
+          </article>
+          <article class="card reveal">
+            <h3>FamilyPilot</h3>
+            <p>Organisations-App für Familien mit Kalender und Aufgaben.</p>
+            <div class="tags">
+              <span class="tag">App Design</span>
+              <span class="tag">iOS & Android</span>
+              <span class="tag">Planung</span>
+            </div>
+            <div style="margin-top: 20px;">
+              <a class="btn btn-secondary" href="#kontakt">Projekt ansehen</a>
+            </div>
+          </article>
+          <article class="card reveal">
+            <h3>Tips AI</h3>
+            <p>Analyse-Tool für Sportdaten mit klarer Auswertung.</p>
+            <div class="tags">
+              <span class="tag">Web</span>
+              <span class="tag">Datenanalyse</span>
+              <span class="tag">Dashboard</span>
+            </div>
+            <div style="margin-top: 20px;">
+              <a class="btn btn-secondary" href="#kontakt">Projekt ansehen</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <div class="app-card">
-      <h3>Tips AI</h3>
-      <p>
-        Analyse-Tool für Sportereignisse zur statistischen Auswertung
-        und Entscheidungsunterstützung. Kein Echtgeld, keine Wetten.
-      </p>
-      <span class="status dev">Status: Interne Entwicklung</span>
-    </div>
-  </div>
-</section>
+    <section class="section" id="ueber-mich">
+      <div class="container">
+        <h2 class="section-title reveal">Über mich</h2>
+        <p class="section-lead reveal">
+          Ich bin selbstständiger Entwickler mit Fokus auf saubere Umsetzung,
+          modernes UI und wartbare Lösungen. Projekte entstehen in enger
+          Abstimmung, strukturiert und ohne unnötige Komplexität.
+        </p>
+      </div>
+    </section>
 
+    <section class="section" id="kontakt">
+      <div class="container">
+        <h2 class="section-title reveal">Kontakt</h2>
+        <p class="section-lead reveal">
+          Schildern Sie kurz Ihr Vorhaben. Ich melde mich zeitnah mit einer
+          Einschätzung oder Rückfragen.
+        </p>
+        <div class="contact-grid">
+          <div class="form-card reveal">
+            <form action="#" method="post">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required />
+              </div>
+              <div class="form-field">
+                <label for="email">E-Mail-Adresse</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div class="form-field">
+                <label for="message">Nachricht</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">
+                Nachricht senden
+              </button>
+            </form>
+          </div>
+          <div class="hero-card reveal">
+            <h3>Direkter Kontakt</h3>
+            <p class="contact-note">
+              E-Mail: <a href="mailto:a.moukhmalji@gmx.de">a.moukhmalji@gmx.de</a>
+            </p>
+            <p class="contact-note">
+              Standort: Bornheim, Deutschland
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    © 2025 AM Digital Services
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+      <div>© AM Digital Services</div>
+    </div>
   </footer>
+
   <script src="menu.js"></script>
 </body>
 </html>

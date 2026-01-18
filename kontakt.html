@@ -3,16 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Kontaktseite von AM Digital Services. Digitale Lösungen und App-Entwicklung aus Bornheim."
+  />
   <title>Kontakt – AM Digital Services</title>
-
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <header>
-    <div class="header-bar">
-      <h1>AM Digital Services</h1>
-      <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-controls="site-menu" aria-expanded="false">
+  <header class="site-header">
+    <div class="container nav-bar">
+      <div class="brand">AM Digital Services</div>
+      <nav class="site-nav" id="site-menu" aria-label="Hauptnavigation">
+        <a href="index.html#projekte">Projekte</a>
+        <a href="index.html#leistungen">Leistungen</a>
+        <a href="index.html#ueber-mich">Über mich</a>
+        <a href="index.html#kontakt">Kontakt</a>
+      </nav>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Menü öffnen"
+        aria-controls="site-menu"
+        aria-expanded="false"
+      >
         <span class="menu-icon" aria-hidden="true">
           <span></span>
           <span></span>
@@ -20,40 +34,42 @@
         </span>
       </button>
     </div>
-    <p>Kontakt</p>
-    <nav class="site-menu" id="site-menu" aria-label="Seitenmenü">
-      <h2>Menü</h2>
-      <a href="index.html">Startseite</a>
-      <a href="kontakt.html">Kontakt</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="impressum.html">Impressum</a>
-    </nav>
-    <div class="menu-backdrop" data-menu-close></div>
   </header>
+  <div class="menu-backdrop" data-menu-close></div>
 
   <main>
-    <section>
-      <h2>Kontakt</h2>
-      <p>
-        Für Anfragen rund um unsere Apps und digitale Lösungen erreichst du uns
-        gerne per E-Mail.
-      </p>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title reveal">Kontakt</h1>
+        <p class="section-lead reveal">
+          Für Anfragen rund um digitale Produkte und Entwicklung.
+        </p>
 
-      <div class="company-data">
-        <strong>AM Digital Services</strong>
-        Amin Moukhmalji<br />
-        Buschgasse 36<br />
-        53332 Bornheim<br />
-        Deutschland<br />
-        E-Mail:
-        <a href="mailto:a.moukhmalji@gmx.de">a.moukhmalji@gmx.de</a>
+        <article class="card reveal">
+          <h3>Direkter Kontakt</h3>
+          <p>
+            AM Digital Services<br />
+            Amin Moukhmalji<br />
+            Buschgasse 36<br />
+            53332 Bornheim<br />
+            Deutschland<br />
+            E-Mail: <a href="mailto:a.moukhmalji@gmx.de">a.moukhmalji@gmx.de</a>
+          </p>
+        </article>
       </div>
     </section>
   </main>
 
-  <footer>
-    © 2025 AM Digital Services
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+      <div>© AM Digital Services</div>
+    </div>
   </footer>
+
   <script src="menu.js"></script>
 </body>
 </html>

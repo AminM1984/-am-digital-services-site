@@ -3,16 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Datenschutzerklärung von AM Digital Services. Informationen zur Verarbeitung personenbezogener Daten und Ihren Rechten nach DSGVO."
+  />
   <title>Datenschutz – AM Digital Services</title>
-
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <header>
-    <div class="header-bar">
-      <h1>AM Digital Services</h1>
-      <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-controls="site-menu" aria-expanded="false">
+  <header class="site-header">
+    <div class="container nav-bar">
+      <div class="brand">AM Digital Services</div>
+      <nav class="site-nav" id="site-menu" aria-label="Hauptnavigation">
+        <a href="index.html#projekte">Projekte</a>
+        <a href="index.html#leistungen">Leistungen</a>
+        <a href="index.html#ueber-mich">Über mich</a>
+        <a href="index.html#kontakt">Kontakt</a>
+      </nav>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Menü öffnen"
+        aria-controls="site-menu"
+        aria-expanded="false"
+      >
         <span class="menu-icon" aria-hidden="true">
           <span></span>
           <span></span>
@@ -20,42 +34,118 @@
         </span>
       </button>
     </div>
-    <p>Datenschutz</p>
-    <nav class="site-menu" id="site-menu" aria-label="Seitenmenü">
-      <h2>Menü</h2>
-      <a href="index.html">Startseite</a>
-      <a href="kontakt.html">Kontakt</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="impressum.html">Impressum</a>
-    </nav>
-    <div class="menu-backdrop" data-menu-close></div>
   </header>
+  <div class="menu-backdrop" data-menu-close></div>
 
   <main>
-    <section>
-      <h2>Datenschutzerklärung</h2>
-      <p>
-        Diese Website erhebt keine personenbezogenen Daten. Für unsere Apps
-        gelten gesonderte Datenschutzerklärungen innerhalb der jeweiligen
-        App-Stores bzw. in der App selbst.
-      </p>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title reveal">Datenschutzerklärung</h1>
+        <p class="section-lead reveal">
+          Der Schutz Ihrer Daten ist uns wichtig. Nachfolgend informieren wir
+          Sie über die Verarbeitung personenbezogener Daten auf dieser Website.
+        </p>
 
-      <div class="company-data">
-        <strong>Verantwortlich für den Datenschutz</strong>
-        AM Digital Services<br />
-        Amin Moukhmalji<br />
-        Buschgasse 36<br />
-        53332 Bornheim<br />
-        Deutschland<br />
-        E-Mail:
-        <a href="mailto:a.moukhmalji@gmx.de">a.moukhmalji@gmx.de</a>
+        <article class="card reveal">
+          <h3>Verantwortliche Stelle</h3>
+          <p>
+            AM Digital Services<br />
+            Amin Moukhmalji<br />
+            Buschgasse 36<br />
+            53332 Bornheim<br />
+            Deutschland<br />
+            E-Mail: <a href="mailto:a.moukhmalji@gmx.de">a.moukhmalji@gmx.de</a>
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>Allgemeine Hinweise</h3>
+          <p>
+            Personenbezogene Daten werden nur verarbeitet, wenn dies zur
+            Bereitstellung dieser Website erforderlich ist oder Sie uns diese
+            Daten freiwillig mitteilen.
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>Verarbeitung personenbezogener Daten</h3>
+          <p>
+            Beim Besuch dieser Website werden automatisch technische
+            Informationen erfasst, die Ihr Browser übermittelt. Dies umfasst
+            beispielsweise IP-Adresse, Datum und Uhrzeit des Abrufs, Browsertyp
+            sowie das verwendete Betriebssystem.
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>Kontaktformular</h3>
+          <p>
+            Wenn Sie das Kontaktformular nutzen, verarbeiten wir die von Ihnen
+            angegebenen Daten (Name, E-Mail-Adresse, Nachricht), um Ihre Anfrage
+            zu bearbeiten. Die Daten werden nicht ohne Ihre Einwilligung
+            weitergegeben.
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>Server-Log-Files</h3>
+          <p>
+            Der Hosting-Anbieter erhebt und speichert automatisch Informationen
+            in sogenannten Server-Log-Files. Dazu gehören IP-Adresse, Browser,
+            Referrer-URL sowie Datum und Uhrzeit der Anfrage.
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>Hosting und Auftragsverarbeitung</h3>
+          <p>
+            Das Hosting dieser Website erfolgt durch einen externen
+            Dienstleister im Rahmen einer Auftragsverarbeitung gemäß Art. 28
+            DSGVO.
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>Rechte der Nutzer (Art. 15–21 DSGVO)</h3>
+          <p>
+            Sie haben das Recht auf Auskunft, Berichtigung, Löschung,
+            Einschränkung der Verarbeitung, Datenübertragbarkeit sowie
+            Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten.
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>Beschwerderecht</h3>
+          <p>
+            Ihnen steht ein Beschwerderecht bei der zuständigen
+            Aufsichtsbehörde zu, wenn Sie der Ansicht sind, dass die
+            Verarbeitung Ihrer personenbezogenen Daten gegen die DSGVO
+            verstößt.
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>SSL- bzw. HTTPS-Verschlüsselung</h3>
+          <p>
+            Diese Website nutzt aus Sicherheitsgründen eine SSL- bzw.
+            HTTPS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie
+            an der Adresse in der Browserzeile.
+          </p>
+        </article>
       </div>
     </section>
   </main>
 
-  <footer>
-    © 2025 AM Digital Services
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+      <div>© AM Digital Services</div>
+    </div>
   </footer>
+
   <script src="menu.js"></script>
 </body>
 </html>
