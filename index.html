@@ -121,6 +121,24 @@
     color: var(--primary);
   }
 
+  .app-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 10px;
+  }
+
+  .app-title h3 {
+    margin: 0;
+  }
+
+  .app-title img {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    object-fit: contain;
+  }
+
   .app-card p {
     font-size: 0.95rem;
     color: var(--text);
@@ -220,7 +238,10 @@
     </div>
 
     <div class="app-card">
-      <h3>TodoFox</h3>
+      <div class="app-title">
+        <img src="assets/todofox.png" alt="TodoFox Logo" />
+        <h3>TodoFox</h3>
+      </div>
       <p>
         Schlanke To-Do-App mit Fokus auf Übersicht, einfache Bedienung
         und klare Priorisierung.
@@ -232,7 +253,7 @@
         rel="noopener noreferrer"
       >
         <img
-          src="assets/app-store-badge.png"
+          src="assets/IMG_2278.png"
           alt="Laden im App Store"
         />
       </a>
