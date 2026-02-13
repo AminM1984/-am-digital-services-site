@@ -236,6 +236,29 @@ a:hover {
   color: var(--text);
 }
 
+.service-meta {
+  margin-top: 16px;
+}
+
+.service-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(29, 191, 115, 0.45);
+  color: #34d399;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.service-cta {
+  margin-top: 18px;
+}
+
+.fiverr-btn {
+  min-width: 190px;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
