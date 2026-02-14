@@ -453,6 +453,16 @@ a:hover {
   background: rgba(63, 140, 255, 0.14);
 }
 
+.btn-disabled,
+.btn-disabled:hover {
+  color: var(--muted);
+  border-color: var(--border);
+  background: rgba(17, 27, 48, 0.35);
+  box-shadow: none;
+  transform: none;
+  cursor: default;
+}
+
 .cta-primary {
   min-width: 190px;
 }
