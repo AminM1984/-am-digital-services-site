@@ -247,19 +247,30 @@
 
     <section class="section" id="kontakt">
       <div class="container">
-        <h2 class="section-title reveal">Projekt anfragen</h2>
+        <h2 class="section-title reveal">KI-gestützte Projektanfrage</h2>
         <p class="section-lead reveal">
-          Beschreiben Sie kurz Ihr Vorhaben. Ich melde mich zeitnah mit einer klaren Einschätzung zu Aufwand und nächstem Schritt.
+          Unser Lead-Agent stellt gezielte Fragen zu Ihrem Vorhaben und erfasst alle relevanten Daten für eine schnelle Rückmeldung.
         </p>
+        <div class="lead-agent card reveal" id="lead-agent">
+          <div class="lead-agent-head">
+            <h3>Lead-Agent</h3>
+            <p>Bitte beantworten Sie die Fragen kurz und präzise. Es wird immer nur eine Frage gestellt.</p>
+          </div>
+          <div class="lead-agent-log" id="lead-agent-log" aria-live="polite" aria-label="Chatverlauf"></div>
+          <div class="lead-agent-quick" id="lead-agent-quick"></div>
+          <form class="lead-agent-form" id="lead-agent-form">
+            <label class="sr-only" for="lead-agent-input">Ihre Antwort</label>
+            <input id="lead-agent-input" name="lead_agent_input" type="text" autocomplete="off" placeholder="Ihre Antwort eingeben ..." />
+            <button class="btn btn-primary" type="submit">Senden</button>
+          </form>
+          <div class="lead-agent-actions">
+            <button class="btn btn-secondary" id="lead-agent-restart" type="button">Neu starten</button>
+          </div>
+        </div>
         <div class="contact-grid">
           <article class="card reveal contact-option">
-            <h3>E-Mail</h3>
-            <p>Für strukturierte Projektanfragen mit allen wichtigen Details.</p>
-            <a class="btn btn-primary" href="mailto:a.moukhmalji@gmx.de">E-Mail senden</a>
-          </article>
-          <article class="card reveal contact-option">
-            <h3>WhatsApp</h3>
-            <p>Für schnelle Rückfragen und eine direkte erste Abstimmung.</p>
+            <h3>Direkter Kontakt</h3>
+            <p>Alternativ können Sie mich direkt per WhatsApp kontaktieren.</p>
             <a
               class="btn btn-secondary"
               href="https://wa.me/4915123035854?text=Hallo%20Amin%2C%20ich%20habe%20ein%20Projekt%20und%20möchte%20es%20mit%20Ihnen%20besprechen."
@@ -269,23 +280,6 @@
               WhatsApp schreiben
             </a>
           </article>
-        </div>
-        <div class="form-card reveal">
-          <form action="#" method="post">
-            <div class="form-field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" required />
-            </div>
-            <div class="form-field">
-              <label for="email">E-Mail-Adresse</label>
-              <input id="email" name="email" type="email" required />
-            </div>
-            <div class="form-field">
-              <label for="message">Projektbeschreibung</label>
-              <textarea id="message" name="message" required></textarea>
-            </div>
-            <button class="btn btn-primary" type="submit">Nachricht senden</button>
-          </form>
         </div>
       </div>
     </section>
@@ -312,5 +306,6 @@
   </footer>
 
   <script src="menu.js"></script>
+  <script src="lead-agent.js"></script>
 </body>
 </html>
