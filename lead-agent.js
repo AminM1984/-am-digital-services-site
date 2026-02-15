@@ -103,47 +103,10 @@ if (el.root && el.log && el.quick && el.form && el.input && el.restart) {
     }
   };
 
-  const summaryText = () => `--- LEAD ZUSAMMENFASSUNG ---\n\nName: ${leadState.name}\nTelefon: ${leadState.telefon}\nE-Mail: ${leadState.email}\nPLZ / Ort: ${leadState.plz_ort}\nArt der Anfrage: ${leadState.art_der_anfrage}\nProjektbeschreibung: ${leadState.projektbeschreibung}\nDringlichkeit: ${leadState.dringlichkeit}\nBudget (falls genannt): ${leadState.budget}\nWunschtermin: ${leadState.wunschtermin}\n\n--------------------------`;
-
-  const payloadJson = () => ({
-    lead_complete: true,
-    name: leadState.name,
-    telefon: leadState.telefon,
-    email: leadState.email,
-    plz_ort: leadState.plz_ort,
-    art_der_anfrage: leadState.art_der_anfrage,
-    projektbeschreibung: leadState.projektbeschreibung,
-    dringlichkeit: leadState.dringlichkeit,
-    budget: leadState.budget,
-    wunschtermin: leadState.wunschtermin
-  });
-
   const renderCompletion = () => {
     completed = true;
     setQuickReplies([]);
-
-    const summary = summaryText();
-    const payload = JSON.stringify(payloadJson(), null, 2);
-
-    appendHtmlMessage(
-      'bot',
-      `<strong>--- LEAD ZUSAMMENFASSUNG ---</strong><div class="lead-summary">\n\nName: ${leadState.name}\nTelefon: ${leadState.telefon}\nE-Mail: ${leadState.email}\nPLZ / Ort: ${leadState.plz_ort}\nArt der Anfrage: ${leadState.art_der_anfrage}\nProjektbeschreibung: ${leadState.projektbeschreibung}\nDringlichkeit: ${leadState.dringlichkeit}\nBudget (falls genannt): ${leadState.budget}\nWunschtermin: ${leadState.wunschtermin}\n\n--------------------------</div><strong>JSON</strong><pre class="lead-json">${payload}</pre>Abschluss: Vielen Dank. AM Digital Services meldet sich zeitnah bei Ihnen.`,
-      'lead-result'
-    );
-
-    const mailBody = encodeURIComponent(`${summary}\n\nJSON:\n${payload}`);
-    const mailTo = `mailto:a.moukhmalji@gmx.de?subject=Neue%20Lead-Anfrage%20AM%20Digital%20Services&body=${mailBody}`;
-
-    const sendButton = document.createElement('a');
-    sendButton.className = 'btn btn-primary';
-    sendButton.href = mailTo;
-    sendButton.textContent = 'Zusammenfassung per E-Mail senden';
-
-    const wrap = document.createElement('div');
-    wrap.className = 'lead-agent-actions';
-    wrap.appendChild(sendButton);
-    el.log.appendChild(wrap);
-    el.log.scrollTop = el.log.scrollHeight;
+    appendMessage('bot', 'Vielen Dank für Ihre Anfrage. AM Digital Services meldet sich zeitnah bei Ihnen.');
 
     setBusy(false);
     el.input.disabled = true;
