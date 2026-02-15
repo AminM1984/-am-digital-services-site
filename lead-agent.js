@@ -19,13 +19,18 @@ const el = {
   quick: document.getElementById('lead-agent-quick'),
   form: document.getElementById('lead-agent-form'),
   input: document.getElementById('lead-agent-input'),
-  restart: document.getElementById('lead-agent-restart')
+  restart: document.getElementById('lead-agent-restart'),
+  open: document.getElementById('open-lead-agent'),
+  overlay: document.getElementById('lead-agent-overlay'),
+  close: document.getElementById('lead-agent-close'),
+  dialog: document.querySelector('.lead-agent-dialog')
 };
 
-if (el.root && el.log && el.quick && el.form && el.input && el.restart) {
+if (el.root && el.log && el.quick && el.form && el.input && el.restart && el.open && el.overlay && el.close) {
   const history = [];
   let completed = false;
   let busy = false;
+  let hasStarted = false;
 
   const requiredComplete = (lead) => {
     const hasContact = !!(lead.telefon || lead.email);
@@ -175,6 +180,7 @@ if (el.root && el.log && el.quick && el.form && el.input && el.restart) {
   };
 
   const startConversation = async () => {
+    hasStarted = true;
     completed = false;
     setBusy(false);
     el.log.innerHTML = '';
@@ -190,6 +196,22 @@ if (el.root && el.log && el.quick && el.form && el.input && el.restart) {
     await callAgent('__START__');
   };
 
+  const openOverlay = async () => {
+    el.overlay.classList.add('is-open');
+    el.overlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lead-agent-open');
+    if (!hasStarted) {
+      await startConversation();
+    }
+    el.input.focus();
+  };
+
+  const closeOverlay = () => {
+    el.overlay.classList.remove('is-open');
+    el.overlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lead-agent-open');
+  };
+
   el.form.addEventListener('submit', async (event) => {
     event.preventDefault();
     await handleUserInput(el.input.value);
@@ -199,5 +221,21 @@ if (el.root && el.log && el.quick && el.form && el.input && el.restart) {
     await startConversation();
   });
 
-  startConversation();
+  el.open.addEventListener('click', async () => {
+    await openOverlay();
+  });
+
+  el.close.addEventListener('click', closeOverlay);
+
+  el.overlay.addEventListener('click', (event) => {
+    if (event.target === el.overlay) {
+      closeOverlay();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && el.overlay.classList.contains('is-open')) {
+      closeOverlay();
+    }
+  });
 }
