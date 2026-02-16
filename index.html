@@ -9,6 +9,13 @@
   />
   <title>AM Digital Services – Websites und Apps</title>
   <link rel="stylesheet" href="style.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJJTB56KE5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MJJTB56KE5');
+  </script>
 </head>
 <body id="top">
   <header class="site-header">
@@ -247,14 +254,14 @@
 
     <section class="section" id="kontakt">
       <div class="container">
-        <h2 class="section-title reveal">KI-gestützte Projektanfrage</h2>
+        <h2 class="section-title reveal">Projektanfrage</h2>
         <p class="section-lead reveal">
-          Unser Lead-Agent stellt gezielte Fragen zu Ihrem Vorhaben und erfasst alle relevanten Daten für eine schnelle Rückmeldung.
+          Beantworten Sie uns ein paar kurze Fragen zu Ihrer Anfrage und wir melden uns schnellstmöglich bei Ihnen.
         </p>
         <div class="contact-grid contact-grid-dual">
           <article class="card reveal contact-option contact-option-cta">
             <h3>Anfrage stellen</h3>
-            <p>Starten Sie die Erstqualifizierung mit dem KI-Lead-Agenten in einem kurzen Dialog.</p>
+            <p>Starten Sie die Erstqualifizierung in einem kurzen Dialog.</p>
             <button class="btn btn-primary" id="open-lead-agent" type="button">Jetzt anfragen</button>
           </article>
           <article class="card reveal contact-option">
@@ -282,7 +289,13 @@
             <h3 id="lead-agent-title">Lead-Agent</h3>
             <p>Bitte beantworten Sie die Fragen kurz und präzise. Es wird immer nur eine Frage gestellt.</p>
           </div>
-          <button class="lead-agent-close" id="lead-agent-close" type="button" aria-label="Dialog schließen">Schließen</button>
+          <div class="lead-agent-head-actions">
+            <button class="lead-agent-menu-toggle" id="lead-agent-menu-toggle" type="button" aria-label="Optionen öffnen" aria-expanded="false">⋯</button>
+            <div class="lead-agent-mobile-menu" id="lead-agent-mobile-menu" hidden>
+              <button class="lead-agent-mobile-action" data-lead-restart type="button">Neu starten</button>
+            </div>
+            <button class="lead-agent-close" id="lead-agent-close" type="button" aria-label="Dialog schließen">Schließen</button>
+          </div>
         </div>
         <div class="lead-agent-log" id="lead-agent-log" aria-live="polite" aria-label="Chatverlauf"></div>
         <div class="lead-agent-quick" id="lead-agent-quick"></div>
@@ -292,7 +305,7 @@
           <button class="btn btn-primary" type="submit">Senden</button>
         </form>
         <div class="lead-agent-actions">
-          <button class="btn btn-secondary" id="lead-agent-restart" type="button">Neu starten</button>
+          <button class="btn btn-secondary" data-lead-restart type="button">Neu starten</button>
         </div>
       </div>
     </div>

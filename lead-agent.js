@@ -19,14 +19,29 @@ const el = {
   quick: document.getElementById('lead-agent-quick'),
   form: document.getElementById('lead-agent-form'),
   input: document.getElementById('lead-agent-input'),
-  restart: document.getElementById('lead-agent-restart'),
+  restarts: document.querySelectorAll('[data-lead-restart]'),
   open: document.getElementById('open-lead-agent'),
   overlay: document.getElementById('lead-agent-overlay'),
   close: document.getElementById('lead-agent-close'),
-  dialog: document.querySelector('.lead-agent-dialog')
+  dialog: document.querySelector('.lead-agent-dialog'),
+  menuToggle: document.getElementById('lead-agent-menu-toggle'),
+  mobileMenu: document.getElementById('lead-agent-mobile-menu')
 };
 
-if (el.root && el.log && el.quick && el.form && el.input && el.restart && el.open && el.overlay && el.close) {
+if (
+  el.root &&
+  el.log &&
+  el.quick &&
+  el.form &&
+  el.input &&
+  el.restarts &&
+  el.restarts.length &&
+  el.open &&
+  el.overlay &&
+  el.close &&
+  el.menuToggle &&
+  el.mobileMenu
+) {
   const history = [];
   let completed = false;
   let busy = false;
@@ -210,6 +225,17 @@ if (el.root && el.log && el.quick && el.form && el.input && el.restart && el.ope
     el.overlay.classList.remove('is-open');
     el.overlay.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lead-agent-open');
+    closeMenu();
+  };
+
+  const openMenu = () => {
+    el.mobileMenu.hidden = false;
+    el.menuToggle.setAttribute('aria-expanded', 'true');
+  };
+
+  const closeMenu = () => {
+    el.mobileMenu.hidden = true;
+    el.menuToggle.setAttribute('aria-expanded', 'false');
   };
 
   el.form.addEventListener('submit', async (event) => {
@@ -217,8 +243,19 @@ if (el.root && el.log && el.quick && el.form && el.input && el.restart && el.ope
     await handleUserInput(el.input.value);
   });
 
-  el.restart.addEventListener('click', async () => {
-    await startConversation();
+  el.restarts.forEach((button) => {
+    button.addEventListener('click', async () => {
+      closeMenu();
+      await startConversation();
+    });
+  });
+
+  el.menuToggle.addEventListener('click', () => {
+    if (el.mobileMenu.hidden) {
+      openMenu();
+      return;
+    }
+    closeMenu();
   });
 
   el.open.addEventListener('click', async () => {
@@ -230,6 +267,15 @@ if (el.root && el.log && el.quick && el.form && el.input && el.restart && el.ope
   el.overlay.addEventListener('click', (event) => {
     if (event.target === el.overlay) {
       closeOverlay();
+      return;
+    }
+
+    if (!el.mobileMenu.hidden) {
+      const inMenu = el.mobileMenu.contains(event.target);
+      const onToggle = el.menuToggle.contains(event.target);
+      if (!inMenu && !onToggle) {
+        closeMenu();
+      }
     }
   });
 

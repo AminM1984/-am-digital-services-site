@@ -534,6 +534,8 @@ textarea {
   padding: 0;
   overflow: hidden;
   max-height: min(84vh, 860px);
+  display: flex;
+  flex-direction: column;
 }
 
 .lead-agent-head {
@@ -556,10 +558,18 @@ textarea {
   font-size: 0.92rem;
 }
 
+.lead-agent-head-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .lead-agent-log {
   display: grid;
   gap: 12px;
-  max-height: min(50vh, 520px);
+  min-height: 0;
+  flex: 1 1 auto;
   overflow-y: auto;
   padding: 18px 24px;
   background: rgba(10, 18, 34, 0.52);
@@ -619,7 +629,7 @@ textarea {
   grid-template-columns: 1fr auto;
   gap: 10px;
   align-items: center;
-  padding: 12px 24px 20px;
+  padding: 12px 24px calc(16px + env(safe-area-inset-bottom));
   border-top: 1px solid var(--border);
 }
 
@@ -630,7 +640,7 @@ textarea {
 .lead-agent-actions {
   display: flex;
   justify-content: flex-end;
-  padding: 0 24px 20px;
+  padding: 0 24px 16px;
 }
 
 .lead-agent-overlay {
@@ -679,6 +689,50 @@ textarea {
 .lead-agent-close:hover {
   color: var(--white);
   border-color: var(--accent-hover);
+}
+
+.lead-agent-menu-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: rgba(17, 27, 48, 0.68);
+  color: var(--text);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lead-agent-mobile-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 44px;
+  z-index: 2;
+  min-width: 148px;
+  background: rgba(10, 18, 34, 0.96);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  padding: 6px;
+}
+
+.lead-agent-mobile-action {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.lead-agent-mobile-action:hover {
+  color: var(--white);
+  background: rgba(63, 140, 255, 0.16);
+  border-color: rgba(63, 140, 255, 0.36);
 }
 
 .lead-summary,
@@ -831,11 +885,26 @@ textarea {
   }
 
   .lead-agent-overlay {
-    padding: 10px;
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
   }
 
   .lead-agent-dialog {
     width: 100%;
+    max-height: 100dvh;
+  }
+
+  .lead-agent {
+    max-height: calc(100dvh - 16px - env(safe-area-inset-bottom));
+  }
+
+  .lead-agent-actions {
+    display: none;
+  }
+
+  .lead-agent-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .btn {
