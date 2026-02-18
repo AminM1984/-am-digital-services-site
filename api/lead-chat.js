@@ -127,6 +127,78 @@ const defaultResult = () => ({
   }
 });
 
+const isLeadComplete = (lead) => {
+  const hasContact = Boolean((lead.telefon || '').trim() || (lead.email || '').trim());
+  return Boolean(
+    (lead.name || '').trim() &&
+    (lead.plz_ort || '').trim() &&
+    (lead.art_der_anfrage || '').trim() &&
+    (lead.projektbeschreibung || '').trim() &&
+    (lead.dringlichkeit || '').trim() &&
+    hasContact
+  );
+};
+
+const buildLeadSummary = (lead) =>
+  `--- LEAD ZUSAMMENFASSUNG ---\n\n` +
+  `Name: ${lead.name || ''}\n` +
+  `Telefon: ${lead.telefon || ''}\n` +
+  `E-Mail: ${lead.email || ''}\n` +
+  `PLZ / Ort: ${lead.plz_ort || ''}\n` +
+  `Art der Anfrage: ${lead.art_der_anfrage || ''}\n` +
+  `Projektbeschreibung: ${lead.projektbeschreibung || ''}\n` +
+  `Dringlichkeit: ${lead.dringlichkeit || ''}\n` +
+  `Budget (falls genannt): ${lead.budget || ''}\n` +
+  `Wunschtermin: ${lead.wunschtermin || ''}\n\n` +
+  `--------------------------`;
+
+const sendLeadMail = async (lead) => {
+  const resendApiKey = process.env.RESEND_API_KEY;
+  const toEmail = process.env.LEAD_TO_EMAIL;
+  const fromEmail = process.env.LEAD_FROM_EMAIL || 'onboarding@resend.dev';
+
+  if (!resendApiKey || !toEmail) {
+    return { sent: false, reason: 'missing_resend_config' };
+  }
+
+  const summary = buildLeadSummary(lead);
+  const payload = {
+    lead_complete: true,
+    name: lead.name || '',
+    telefon: lead.telefon || '',
+    email: lead.email || '',
+    plz_ort: lead.plz_ort || '',
+    art_der_anfrage: lead.art_der_anfrage || '',
+    projektbeschreibung: lead.projektbeschreibung || '',
+    dringlichkeit: lead.dringlichkeit || '',
+    budget: lead.budget || '',
+    wunschtermin: lead.wunschtermin || ''
+  };
+
+  const emailBody = `${summary}\n\nJSON:\n${JSON.stringify(payload, null, 2)}`;
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${resendApiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      from: fromEmail,
+      to: [toEmail],
+      subject: `Neue Lead-Anfrage: ${lead.art_der_anfrage || 'Projektanfrage'}`,
+      text: emailBody
+    })
+  });
+
+  if (!response.ok) {
+    const detail = await response.text();
+    throw new Error(`Resend error: ${detail.slice(0, 1200)}`);
+  }
+
+  return { sent: true };
+};
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -216,6 +288,20 @@ export default async function handler(req, res) {
         ? parsed.suggested_replies.slice(0, 4).map((v) => String(v))
         : []
     };
+
+    const mergedLead = {
+      ...defaultResult().extracted,
+      ...(leadState || {}),
+      ...(safe.extracted || {})
+    };
+
+    if (safe.lead_complete && isLeadComplete(mergedLead)) {
+      try {
+        await sendLeadMail(mergedLead);
+      } catch (mailError) {
+        console.error('Lead mail failed:', mailError?.message || mailError);
+      }
+    }
 
     res.status(200).json(safe);
   } catch (error) {
