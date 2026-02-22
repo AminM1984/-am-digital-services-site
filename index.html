@@ -21,8 +21,13 @@
   <header class="site-header">
     <div class="container nav-bar">
       <a class="brand" href="#top" aria-label="Zur Startseite nach oben">
-        <span class="brand-am">AM</span>
-        <span class="brand-text">Digital Services</span>
+        <img
+          class="brand-logo"
+          src="assets/am-digital-services-logo.png"
+          alt="AM Digital Services"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+        />
+        <span class="brand-fallback">AM Digital Services</span>
       </a>
       <nav class="site-nav" id="site-menu" aria-label="Hauptnavigation">
         <a href="#leistungen">Leistungen</a>

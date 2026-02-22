@@ -87,21 +87,21 @@ a:hover {
 }
 
 .brand {
-  font-size: 1.08rem;
-  letter-spacing: 0.3px;
   display: flex;
-  gap: 6px;
-  align-items: baseline;
+  align-items: center;
 }
 
-.brand .brand-am {
-  font-weight: 800;
+.brand-logo {
+  display: block;
+  width: auto;
+  height: 48px;
+}
+
+.brand-fallback {
+  display: none;
+  font-weight: 700;
   color: var(--heading);
-}
-
-.brand .brand-text {
-  font-weight: 600;
-  color: var(--text);
+  letter-spacing: 0.02em;
 }
 
 .site-nav {
@@ -863,6 +863,10 @@ textarea {
 
   .form-card {
     padding: 22px;
+  }
+
+  .brand-logo {
+    height: 40px;
   }
 
   .lead-agent-log,
