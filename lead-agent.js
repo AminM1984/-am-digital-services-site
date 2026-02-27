@@ -205,8 +205,8 @@ if (
     });
     history.length = 0;
 
-    appendMessage('bot', 'Hallo und willkommen bei AM Digital Services. Ich erfasse Ihre Anfrage strukturiert.');
-    history.push({ role: 'assistant', text: 'Hallo und willkommen bei AM Digital Services. Ich erfasse Ihre Anfrage strukturiert.' });
+    appendMessage('bot', 'Beantworten Sie uns kurz und einfach ein paar Fragen zu Ihrem Projektwunsch.');
+    history.push({ role: 'assistant', text: 'Beantworten Sie uns kurz und einfach ein paar Fragen zu Ihrem Projektwunsch.' });
 
     await callAgent('__START__');
   };

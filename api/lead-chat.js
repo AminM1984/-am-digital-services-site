@@ -153,6 +153,19 @@ const buildLeadSummary = (lead) =>
   `Wunschtermin: ${lead.wunschtermin || ''}\n\n` +
   `--------------------------`;
 
+const buildLeadPayload = (lead) => ({
+  lead_complete: true,
+  name: lead.name || '',
+  telefon: lead.telefon || '',
+  email: lead.email || '',
+  plz_ort: lead.plz_ort || '',
+  art_der_anfrage: lead.art_der_anfrage || '',
+  projektbeschreibung: lead.projektbeschreibung || '',
+  dringlichkeit: lead.dringlichkeit || '',
+  budget: lead.budget || '',
+  wunschtermin: lead.wunschtermin || ''
+});
+
 const sendLeadMail = async (lead) => {
   const resendApiKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.LEAD_TO_EMAIL;
@@ -163,18 +176,7 @@ const sendLeadMail = async (lead) => {
   }
 
   const summary = buildLeadSummary(lead);
-  const payload = {
-    lead_complete: true,
-    name: lead.name || '',
-    telefon: lead.telefon || '',
-    email: lead.email || '',
-    plz_ort: lead.plz_ort || '',
-    art_der_anfrage: lead.art_der_anfrage || '',
-    projektbeschreibung: lead.projektbeschreibung || '',
-    dringlichkeit: lead.dringlichkeit || '',
-    budget: lead.budget || '',
-    wunschtermin: lead.wunschtermin || ''
-  };
+  const payload = buildLeadPayload(lead);
 
   const emailBody = `${summary}\n\nJSON:\n${JSON.stringify(payload, null, 2)}`;
 
@@ -195,6 +197,44 @@ const sendLeadMail = async (lead) => {
   if (!response.ok) {
     const detail = await response.text();
     throw new Error(`Resend error: ${detail.slice(0, 1200)}`);
+  }
+
+  return { sent: true };
+};
+
+const sendLeadWhatsappWebhook = async (lead) => {
+  const webhookUrl = process.env.LEAD_WHATSAPP_WEBHOOK_URL;
+  const webhookToken = process.env.LEAD_WHATSAPP_WEBHOOK_TOKEN;
+
+  if (!webhookUrl) {
+    return { sent: false, reason: 'missing_whatsapp_webhook' };
+  }
+
+  const payload = {
+    event: 'lead_completed',
+    source: 'am-digital-services-site',
+    created_at: new Date().toISOString(),
+    summary: buildLeadSummary(lead),
+    lead: buildLeadPayload(lead)
+  };
+
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+
+  if (webhookToken) {
+    headers['x-lead-webhook-token'] = webhookToken;
+  }
+
+  const response = await fetch(webhookUrl, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    const detail = await response.text();
+    throw new Error(`WhatsApp webhook error: ${detail.slice(0, 1200)}`);
   }
 
   return { sent: true };
@@ -297,10 +337,20 @@ export default async function handler(req, res) {
     };
 
     if (safe.lead_complete && isLeadComplete(mergedLead)) {
-      try {
-        await sendLeadMail(mergedLead);
-      } catch (mailError) {
-        console.error('Lead mail failed:', mailError?.message || mailError);
+      const notifyResults = await Promise.allSettled([
+        sendLeadMail(mergedLead),
+        sendLeadWhatsappWebhook(mergedLead)
+      ]);
+
+      const mailResult = notifyResults[0];
+      const whatsappResult = notifyResults[1];
+
+      if (mailResult?.status === 'rejected') {
+        console.error('Lead mail failed:', mailResult.reason?.message || mailResult.reason);
+      }
+
+      if (whatsappResult?.status === 'rejected') {
+        console.error('Lead WhatsApp webhook failed:', whatsappResult.reason?.message || whatsappResult.reason);
       }
     }
 

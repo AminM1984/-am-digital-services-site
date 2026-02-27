@@ -82,8 +82,32 @@
             Buschgasse 36<br />
             53332 Bornheim<br />
             Deutschland<br />
-            E-Mail: <a href="mailto:a.moukhmalji@gmx.de">a.moukhmalji@gmx.de</a>
+            E-Mail: <a href="mailto:info@am-digital-services.de">info@am-digital-services.de</a>
           </p>
+        </article>
+
+        <article class="card reveal form-card" id="kontaktformular">
+          <h3>E-Mail-Kontaktformular</h3>
+          <p>Beschreiben Sie kurz Ihr Anliegen. Ihr E-Mail-Programm öffnet sich mit den vorausgefüllten Daten.</p>
+          <form action="mailto:info@am-digital-services.de" method="post" enctype="text/plain">
+            <div class="form-field">
+              <label for="kontakt-name">Name</label>
+              <input id="kontakt-name" name="Name" type="text" required />
+            </div>
+            <div class="form-field">
+              <label for="kontakt-email">E-Mail</label>
+              <input id="kontakt-email" name="E-Mail" type="email" required />
+            </div>
+            <div class="form-field">
+              <label for="kontakt-telefon">Telefon (optional)</label>
+              <input id="kontakt-telefon" name="Telefon" type="text" />
+            </div>
+            <div class="form-field">
+              <label for="kontakt-nachricht">Nachricht</label>
+              <textarea id="kontakt-nachricht" name="Nachricht" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">E-Mail-Anfrage senden</button>
+          </form>
         </article>
       </div>
     </section>

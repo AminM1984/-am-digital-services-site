@@ -19,6 +19,20 @@ Vercel Environment Variables:
 - `LEAD_TO_EMAIL=deine-adresse@example.com`
 - optional: `LEAD_FROM_EMAIL=onboarding@resend.dev` (oder eigene verifizierte Domain-Adresse)
 
+### WhatsApp-Benachrichtigung für neue Leads (optional)
+Zusätzlich kann der Server bei vollständigem Lead einen Webhook aufrufen (z. B. n8n), der die Nachricht per WhatsApp verschickt.
+
+Vercel Environment Variables:
+- `LEAD_WHATSAPP_WEBHOOK_URL=https://dein-webhook-endpoint`
+- optional: `LEAD_WHATSAPP_WEBHOOK_TOKEN=dein_geheimer_token`
+
+Webhook-Payload (POST, JSON):
+- `event`: `lead_completed`
+- `source`: `am-digital-services-site`
+- `created_at`: ISO-Zeitstempel
+- `summary`: formatierte Lead-Zusammenfassung
+- `lead`: strukturiertes Lead-Objekt
+
 ### Deployment-Hinweis
 - Die Datei `api/lead-chat.js` ist als Serverless-Endpoint ausgelegt (z. B. Vercel).
 - Der Frontend-Chat ruft standardmäßig `'/api/lead-chat'` auf.

@@ -126,12 +126,27 @@ a:hover {
 
 .nav-toggle {
   display: none;
-  background: transparent;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  background: rgba(17, 27, 48, 0.5);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 8px;
-  color: var(--white);
+  color: var(--text);
   cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.nav-toggle:hover,
+.nav-toggle:focus-visible {
+  color: var(--white);
+  border-color: var(--accent-hover);
+  background: var(--accent);
+  box-shadow: 0 10px 24px rgba(63, 140, 255, 0.26);
+  transform: translateY(-1px);
+  outline: none;
 }
 
 .menu-icon {
@@ -555,19 +570,25 @@ a:hover {
   font-size: 1rem;
   line-height: 1.2;
   font-family: inherit;
-  border: 1px solid transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: rgba(17, 27, 48, 0.5);
   transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: var(--white);
-  box-shadow: 0 10px 24px rgba(63, 140, 255, 0.26);
+  border-color: var(--border);
+  color: var(--text);
+  background: rgba(17, 27, 48, 0.5);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn:not(.btn-disabled):hover {
   color: var(--white);
-  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  background: var(--accent);
+  box-shadow: 0 10px 24px rgba(63, 140, 255, 0.26);
   transform: translateY(-1px);
 }
 
@@ -575,12 +596,6 @@ a:hover {
   border-color: var(--border);
   color: var(--text);
   background: rgba(17, 27, 48, 0.5);
-}
-
-.btn-secondary:hover {
-  color: var(--white);
-  border-color: var(--accent-hover);
-  background: rgba(63, 140, 255, 0.14);
 }
 
 .btn-disabled,
@@ -724,18 +739,21 @@ textarea {
 .quick-btn {
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
-  background: rgba(17, 27, 48, 0.6);
+  background: rgba(17, 27, 48, 0.5);
   color: var(--text);
-  padding: 8px 12px;
-  font-size: 0.84rem;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .quick-btn:hover {
   color: var(--white);
   border-color: var(--accent-hover);
-  background: rgba(63, 140, 255, 0.16);
+  background: var(--accent);
+  box-shadow: 0 10px 24px rgba(63, 140, 255, 0.26);
+  transform: translateY(-1px);
 }
 
 .lead-agent-form {
@@ -792,17 +810,21 @@ textarea {
 .lead-agent-close {
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
-  background: rgba(17, 27, 48, 0.68);
+  background: rgba(17, 27, 48, 0.5);
   color: var(--text);
-  padding: 8px 14px;
-  font-size: 0.84rem;
+  padding: 10px 16px;
+  font-size: 0.92rem;
   font-weight: 600;
   cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .lead-agent-close:hover {
   color: var(--white);
   border-color: var(--accent-hover);
+  background: var(--accent);
+  box-shadow: 0 10px 24px rgba(63, 140, 255, 0.26);
+  transform: translateY(-1px);
 }
 
 .lead-agent-menu-toggle {
@@ -811,11 +833,20 @@ textarea {
   height: 40px;
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
-  background: rgba(17, 27, 48, 0.68);
+  background: rgba(17, 27, 48, 0.5);
   color: var(--text);
   font-size: 1.35rem;
   line-height: 1;
   cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.lead-agent-menu-toggle:hover {
+  color: var(--white);
+  border-color: var(--accent-hover);
+  background: var(--accent);
+  box-shadow: 0 10px 24px rgba(63, 140, 255, 0.26);
+  transform: translateY(-1px);
 }
 
 .lead-agent-mobile-menu {
@@ -833,20 +864,24 @@ textarea {
 
 .lead-agent-mobile-action {
   width: 100%;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: rgba(17, 27, 48, 0.5);
   color: var(--text);
-  text-align: left;
-  padding: 8px 10px;
-  font-size: 0.9rem;
+  text-align: center;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .lead-agent-mobile-action:hover {
   color: var(--white);
-  background: rgba(63, 140, 255, 0.16);
-  border-color: rgba(63, 140, 255, 0.36);
+  border-color: var(--accent-hover);
+  background: var(--accent);
+  box-shadow: 0 10px 24px rgba(63, 140, 255, 0.26);
+  transform: translateY(-1px);
 }
 
 .lead-summary,
