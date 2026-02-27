@@ -54,10 +54,20 @@ if (
       lead.plz_ort &&
       lead.art_der_anfrage &&
       lead.projektbeschreibung &&
-      lead.projektbeschreibung.length >= 20 &&
       lead.dringlichkeit &&
       hasContact
     );
+  };
+
+  const getMissingRequiredFields = (lead) => {
+    const missing = [];
+    if (!lead.name) missing.push('Name');
+    if (!(lead.telefon || lead.email)) missing.push('Kontakt (Telefon oder E-Mail)');
+    if (!lead.plz_ort) missing.push('PLZ/Ort');
+    if (!lead.art_der_anfrage) missing.push('Anfrageart');
+    if (!lead.projektbeschreibung) missing.push('Projektbeschreibung');
+    if (!lead.dringlichkeit) missing.push('Dringlichkeit');
+    return missing;
   };
 
   const sanitize = (value) => (value || '').trim();
@@ -156,20 +166,25 @@ if (
       const assistantMessage = sanitize(data.assistant_message) || 'Danke. Können Sie das bitte kurz präzisieren?';
 
       mergeLead(data.extracted || {});
-      appendMessage('bot', assistantMessage);
-      history.push({ role: 'assistant', text: assistantMessage });
-      setQuickReplies(data.suggested_replies || []);
-
       const modelWantsFinish = Boolean(data.lead_complete);
-      if (modelWantsFinish && requiredComplete(leadState)) {
+      const localComplete = requiredComplete(leadState);
+
+      if (modelWantsFinish && localComplete) {
         renderCompletion();
         return;
       }
 
-      if (modelWantsFinish && !requiredComplete(leadState)) {
-        appendMessage('bot', 'Es fehlen noch Pflichtangaben (Name, Kontakt, PLZ/Ort, Anfrageart, Projektdetails und Dringlichkeit). Ich stelle dazu jetzt gezielte Nachfragen.');
+      if (modelWantsFinish && !localComplete) {
+        const missing = getMissingRequiredFields(leadState);
+        appendMessage('bot', `Es fehlen noch Angaben: ${missing.join(', ')}. Ich frage gezielt nach.`);
+        setQuickReplies([]);
+        setBusy(false);
+        return;
       }
 
+      appendMessage('bot', assistantMessage);
+      history.push({ role: 'assistant', text: assistantMessage });
+      setQuickReplies(data.suggested_replies || []);
       setBusy(false);
     } catch (error) {
       appendMessage('bot', 'Der KI-Lead-Agent ist gerade nicht erreichbar. Bitte versuchen Sie es in 1-2 Minuten erneut oder nutzen Sie vorübergehend WhatsApp.');
