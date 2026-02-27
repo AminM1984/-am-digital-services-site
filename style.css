@@ -313,6 +313,98 @@ a:hover {
   align-items: start;
 }
 
+.about-story {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.about-story .card {
+  display: grid;
+  gap: 12px;
+}
+
+.about-label {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-hover);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.about-label::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent-hover);
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: var(--space-3);
+}
+
+.principle-item {
+  background: rgba(10, 18, 34, 0.5);
+  border: 1px solid rgba(63, 140, 255, 0.18);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+
+.principle-item h4 {
+  margin: 0 0 6px;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: var(--heading);
+}
+
+.principle-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.promise-box {
+  gap: 12px;
+}
+
+.story-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.story-list li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--text);
+}
+
+.story-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-hover);
+}
+
+.story-cta {
+  margin-top: var(--space-1);
+  min-width: 190px;
+}
+
 .card {
   background: linear-gradient(160deg, rgba(17, 27, 48, 0.98), rgba(16, 25, 43, 0.98));
   border: 1px solid var(--border);
@@ -915,6 +1007,10 @@ textarea {
   .proof-grid,
   .process-grid,
   .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .principles-grid {
     grid-template-columns: 1fr;
   }
 
