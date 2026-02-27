@@ -202,39 +202,41 @@ const sendLeadMail = async (lead) => {
   return { sent: true };
 };
 
-const sendLeadWhatsappWebhook = async (lead) => {
-  const webhookUrl = process.env.LEAD_WHATSAPP_WEBHOOK_URL;
-  const webhookToken = process.env.LEAD_WHATSAPP_WEBHOOK_TOKEN;
+const sendLeadWhatsappDirect = async (lead) => {
+  const accessToken = process.env.WHATSAPP_CLOUD_ACCESS_TOKEN;
+  const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
+  const toNumber = process.env.WHATSAPP_TO_NUMBER;
+  const graphVersion = process.env.WHATSAPP_GRAPH_VERSION || 'v22.0';
 
-  if (!webhookUrl) {
-    return { sent: false, reason: 'missing_whatsapp_webhook' };
+  if (!accessToken || !phoneNumberId || !toNumber) {
+    return { sent: false, reason: 'missing_whatsapp_cloud_config' };
   }
 
-  const payload = {
-    event: 'lead_completed',
-    source: 'am-digital-services-site',
-    created_at: new Date().toISOString(),
-    summary: buildLeadSummary(lead),
-    lead: buildLeadPayload(lead)
-  };
+  const summary = buildLeadSummary(lead);
+  const messageBody = `Neue Lead-Anfrage über am-digital-services.de\n\n${summary}`.slice(0, 4000);
+  const endpoint = `https://graph.facebook.com/${graphVersion}/${phoneNumberId}/messages`;
 
-  const headers = {
-    'Content-Type': 'application/json'
-  };
-
-  if (webhookToken) {
-    headers['x-lead-webhook-token'] = webhookToken;
-  }
-
-  const response = await fetch(webhookUrl, {
+  const response = await fetch(endpoint, {
     method: 'POST',
-    headers,
-    body: JSON.stringify(payload)
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      messaging_product: 'whatsapp',
+      recipient_type: 'individual',
+      to: toNumber,
+      type: 'text',
+      text: {
+        preview_url: false,
+        body: messageBody
+      }
+    })
   });
 
   if (!response.ok) {
     const detail = await response.text();
-    throw new Error(`WhatsApp webhook error: ${detail.slice(0, 1200)}`);
+    throw new Error(`WhatsApp Cloud API error: ${detail.slice(0, 1200)}`);
   }
 
   return { sent: true };
@@ -339,7 +341,7 @@ export default async function handler(req, res) {
     if (safe.lead_complete && isLeadComplete(mergedLead)) {
       const notifyResults = await Promise.allSettled([
         sendLeadMail(mergedLead),
-        sendLeadWhatsappWebhook(mergedLead)
+        sendLeadWhatsappDirect(mergedLead)
       ]);
 
       const mailResult = notifyResults[0];
@@ -350,7 +352,7 @@ export default async function handler(req, res) {
       }
 
       if (whatsappResult?.status === 'rejected') {
-        console.error('Lead WhatsApp webhook failed:', whatsappResult.reason?.message || whatsappResult.reason);
+        console.error('Lead WhatsApp send failed:', whatsappResult.reason?.message || whatsappResult.reason);
       }
     }
 
