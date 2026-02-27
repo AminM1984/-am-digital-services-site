@@ -93,8 +93,11 @@ a:hover {
 
 .brand-logo {
   display: block;
-  width: auto;
-  height: 48px;
+  width: 182px;
+  height: 64px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
 }
 
 .brand-fallback {
@@ -323,6 +326,12 @@ a:hover {
   gap: 12px;
 }
 
+.about-grid h3 {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
 .about-label {
   margin: 0;
   display: inline-flex;
@@ -355,6 +364,7 @@ a:hover {
   border: 1px solid rgba(63, 140, 255, 0.18);
   border-radius: var(--radius-sm);
   padding: 14px;
+  min-width: 0;
 }
 
 .principle-item h4 {
@@ -362,6 +372,9 @@ a:hover {
   font-size: 0.92rem;
   line-height: 1.35;
   color: var(--heading);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .principle-item p {
@@ -369,6 +382,9 @@ a:hover {
   color: var(--muted);
   font-size: 0.88rem;
   line-height: 1.5;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .promise-box {
@@ -1000,7 +1016,8 @@ textarea {
   }
 
   .brand-logo {
-    height: 40px;
+    width: 142px;
+    height: 50px;
   }
 
   .lead-agent-log,
