@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="AM Digital Services">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#061233"/>
+      <stop offset="100%" stop-color="#0b1f52"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#2e6cff"/>
+      <stop offset="100%" stop-color="#78b5ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1000" cy="100" r="220" fill="#1a2f6f" opacity="0.35"/>
+  <circle cx="150" cy="560" r="260" fill="#0f2b78" opacity="0.35"/>
+  <text x="90" y="260" fill="url(#accent)" font-size="122" font-family="Inter, Arial, sans-serif" font-weight="800">AM</text>
+  <text x="90" y="360" fill="#f2f7ff" font-size="76" font-family="Inter, Arial, sans-serif" font-weight="700">DIGITAL SERVICES</text>
+  <text x="90" y="430" fill="#c2d4f6" font-size="34" font-family="Inter, Arial, sans-serif">Websites, Apps &amp; digitale Lösungen</text>
+</svg>
