@@ -46,6 +46,15 @@ if (
   let completed = false;
   let busy = false;
   let hasStarted = false;
+  let autoCloseTimer = null;
+
+  const clearAutoCloseTimer = () => {
+    if (!autoCloseTimer) {
+      return;
+    }
+    clearTimeout(autoCloseTimer);
+    autoCloseTimer = null;
+  };
 
   const requiredComplete = (lead) => {
     const hasContact = !!(lead.telefon || lead.email);
@@ -137,9 +146,16 @@ if (
     completed = true;
     setQuickReplies([]);
     appendMessage('bot', 'Vielen Dank für Ihre Anfrage. AM Digital Services meldet sich zeitnah bei Ihnen.');
+    appendMessage('bot', 'Dieses Fenster schließt sich automatisch in 5 Sekunden.');
 
     setBusy(false);
     el.input.disabled = true;
+    clearAutoCloseTimer();
+    autoCloseTimer = setTimeout(() => {
+      if (el.overlay.classList.contains('is-open')) {
+        closeOverlay();
+      }
+    }, 5000);
   };
 
   const callAgent = async (userMessage) => {
@@ -212,6 +228,7 @@ if (
   const startConversation = async () => {
     hasStarted = true;
     completed = false;
+    clearAutoCloseTimer();
     setBusy(false);
     el.log.innerHTML = '';
     el.quick.innerHTML = '';
@@ -220,8 +237,8 @@ if (
     });
     history.length = 0;
 
-    appendMessage('bot', 'Beantworten Sie uns kurz und einfach ein paar Fragen zu Ihrem Projektwunsch.');
-    history.push({ role: 'assistant', text: 'Beantworten Sie uns kurz und einfach ein paar Fragen zu Ihrem Projektwunsch.' });
+    appendMessage('bot', 'Hallo und willkommen bei AM Digital Services. Beantworten Sie uns kurz und einfach ein paar Fragen zu Ihrem Projektwunsch.');
+    history.push({ role: 'assistant', text: 'Hallo und willkommen bei AM Digital Services. Beantworten Sie uns kurz und einfach ein paar Fragen zu Ihrem Projektwunsch.' });
 
     await callAgent('__START__');
   };
@@ -237,6 +254,7 @@ if (
   };
 
   const closeOverlay = () => {
+    clearAutoCloseTimer();
     el.overlay.classList.remove('is-open');
     el.overlay.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lead-agent-open');
