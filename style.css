@@ -178,14 +178,19 @@ a:hover {
 }
 
 .hero {
-  padding: 92px 0 52px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 0.9fr;
-  gap: var(--space-5);
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-6);
+  width: 100%;
 }
 
 .eyebrow {
@@ -198,19 +203,21 @@ a:hover {
 }
 
 .hero h1 {
-  margin: 0;
-  font-size: clamp(2rem, 4.2vw, 3.5rem);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  margin: 0 auto;
+  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
   color: var(--heading);
   font-weight: 800;
+  max-width: 18ch;
 }
 
 .hero-lead {
-  margin: var(--space-4) 0 0;
-  font-size: clamp(1rem, 2.1vw, 1.2rem);
+  margin: var(--space-4) auto 0;
+  font-size: clamp(1.05rem, 2.1vw, 1.3rem);
   color: var(--text);
-  max-width: 62ch;
+  max-width: 58ch;
+  text-align: center;
 }
 
 .cta-row {
@@ -218,70 +225,78 @@ a:hover {
   flex-wrap: wrap;
   gap: var(--space-2);
   margin-top: var(--space-5);
+  justify-content: center;
 }
 
 .hero-panel {
-  background: linear-gradient(160deg, rgba(24, 35, 59, 0.95), rgba(17, 26, 46, 0.96));
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  background: rgba(17, 27, 48, 0.5);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 30px;
-  box-shadow: var(--shadow-md);
+  padding: 20px 32px;
+  box-shadow: var(--shadow-sm);
 }
 
 .hero-panel h2 {
-  margin: 0 0 var(--space-3);
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: var(--heading);
+  display: none;
 }
 
 .hero-list {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: grid;
-  gap: var(--space-2);
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .hero-list li {
-  position: relative;
-  padding-left: 16px;
+  flex: 1;
+  text-align: center;
+  padding: 0 20px;
   color: var(--text);
+  font-size: 0.92rem;
+  border-right: 1px solid var(--border);
+}
+
+.hero-list li:last-child {
+  border-right: none;
 }
 
 .hero-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.72em;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-hover);
+  display: none;
 }
 
 .section {
-  padding: var(--space-6) 0;
+  padding: 96px 0;
 }
 
 .section-compact {
-  padding-top: var(--space-5);
-  padding-bottom: var(--space-5);
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 .section-title {
-  font-size: clamp(1.6rem, 2.8vw, 2rem);
-  margin: 0 0 var(--space-3);
-  font-weight: 700;
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  margin: 0 0 var(--space-4);
+  font-weight: 800;
   color: var(--heading);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .section-lead {
   color: var(--text);
-  max-width: 760px;
-  margin: 0 0 var(--space-5);
-  font-size: 1.02rem;
+  max-width: 680px;
+  margin: 0 auto var(--space-6);
+  font-size: 1.08rem;
+  text-align: center;
+  line-height: 1.7;
 }
 
 .highlight-grid {
@@ -1012,17 +1027,33 @@ textarea {
 
 .reveal {
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transform: translateY(32px) scale(0.97);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+}
+
+.highlight-grid .reveal:nth-child(2),
+.service-grid .reveal:nth-child(2),
+.proof-grid .reveal:nth-child(2),
+.process-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+
+.highlight-grid .reveal:nth-child(3),
+.service-grid .reveal:nth-child(3),
+.proof-grid .reveal:nth-child(3),
+.process-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
+
+.highlight-grid .reveal:nth-child(4),
+.service-grid .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+.section-alt {
+  background: var(--bg-soft);
 }
 
 @media (max-width: 1060px) {
-  .hero-grid,
   .about-grid {
     grid-template-columns: 1fr;
   }
@@ -1064,11 +1095,18 @@ textarea {
   }
 
   .hero {
-    padding-top: 74px;
+    min-height: 100svh;
+    padding-top: 100px;
+    padding-bottom: 60px;
   }
 
   .section {
-    padding: 44px 0;
+    padding: 64px 0;
+  }
+
+  .section-compact {
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 
   .hero-panel {
