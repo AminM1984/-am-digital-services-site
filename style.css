@@ -988,6 +988,28 @@ textarea {
   transform: translateY(-1px);
 }
 
+.social-link[aria-label="Instagram"] {
+  background: linear-gradient(45deg, #fcaf45, #fd1d1d, #e1306c, #833ab4, #5851db);
+  border-color: transparent;
+}
+
+.social-link[aria-label="Instagram"]:hover {
+  background: linear-gradient(45deg, #e09d3d, #e01818, #cc2a60, #7330a2, #4a44c5);
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(131, 58, 180, 0.4);
+}
+
+.social-link[aria-label="Facebook"] {
+  background: #1877f2;
+  border-color: transparent;
+}
+
+.social-link[aria-label="Facebook"]:hover {
+  background: #0d65d9;
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(24, 119, 242, 0.4);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(8px);
