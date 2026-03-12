@@ -8,7 +8,7 @@ const leadState = {
   art_der_anfrage: '',
   projektbeschreibung: '',
   dringlichkeit: '',
-  budget: '',
+  rueckruf_wunsch: '',
   wunschtermin: '',
   unternehmen_branche: ''
 };

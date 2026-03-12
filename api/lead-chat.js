@@ -23,18 +23,25 @@ WICHTIG FÜR ERSTANFRAGEN:
 - Maximal eine sinnvolle Vertiefungsfrage pro Themenblock.
 - Vermeide lange Checklisten und frage nicht unnötig detailliert nach Tool-Stacks.
 
+FRAGEREIHENFOLGE (genau diese Reihenfolge einhalten):
+1. Vollständiger Name
+2. Unternehmensname und Branche
+3. PLZ und Ort
+4. Art der Anfrage
+5. Projektbeschreibung
+6. Dringlichkeit
+7. Rückrufwunsch (wann ist der Kunde am besten erreichbar)
+8. Telefonnummer ODER E-Mail
+
 PFLICHTFELDER:
 - Vollständiger Name
+- Unternehmensname und Branche
 - Telefonnummer ODER E-Mail
 - PLZ und Ort
 - Art der Anfrage (Website / Automatisierung / KI / Sonstiges)
 - Projektbeschreibung mit ausreichender Detailtiefe
 - Dringlichkeit (sofort / zeitnah / flexibel)
-
-OPTIONAL:
-- Budgetrahmen
-- Wunschtermin für Rückruf/Call
-- Unternehmensname + Branche
+- Rückrufwunsch (Vormittags / Nachmittags / oder konkretes Datum und Uhrzeit)
 
 WICHTIG:
 - Stelle wirklich nur EINE Frage pro Antwort.
@@ -47,6 +54,7 @@ WICHTIG:
 - Wenn Informationen fehlen, setze lead_complete auf false und frage gezielt nach.
 - Nutze für art_der_anfrage nur: Website, Automatisierung, KI, Sonstiges.
 - Nutze für dringlichkeit nur: sofort, zeitnah, flexibel.
+- Nutze für rueckruf_wunsch: Vormittags, Nachmittags, oder eine konkrete Zeitangabe wie "Montag 14:00 Uhr".
 - Fülle extracted nur mit neu extrahierten oder korrigierten Werten; Unbekanntes als leerer String.`;
 
 const JSON_SCHEMA = {
@@ -74,7 +82,7 @@ const JSON_SCHEMA = {
           art_der_anfrage: { type: 'string' },
           projektbeschreibung: { type: 'string' },
           dringlichkeit: { type: 'string' },
-          budget: { type: 'string' },
+          rueckruf_wunsch: { type: 'string' },
           wunschtermin: { type: 'string' },
           unternehmen_branche: { type: 'string' }
         },
@@ -86,7 +94,7 @@ const JSON_SCHEMA = {
           'art_der_anfrage',
           'projektbeschreibung',
           'dringlichkeit',
-          'budget',
+          'rueckruf_wunsch',
           'wunschtermin',
           'unternehmen_branche'
         ]
@@ -125,7 +133,7 @@ const defaultResult = () => ({
     art_der_anfrage: '',
     projektbeschreibung: '',
     dringlichkeit: '',
-    budget: '',
+    rueckruf_wunsch: '',
     wunschtermin: '',
     unternehmen_branche: ''
   }
@@ -135,10 +143,12 @@ const isLeadComplete = (lead) => {
   const hasContact = Boolean((lead.telefon || '').trim() || (lead.email || '').trim());
   return Boolean(
     (lead.name || '').trim() &&
+    (lead.unternehmen_branche || '').trim() &&
     (lead.plz_ort || '').trim() &&
     (lead.art_der_anfrage || '').trim() &&
     (lead.projektbeschreibung || '').trim() &&
     (lead.dringlichkeit || '').trim() &&
+    (lead.rueckruf_wunsch || '').trim() &&
     hasContact
   );
 };
@@ -146,27 +156,27 @@ const isLeadComplete = (lead) => {
 const buildLeadSummary = (lead) =>
   `--- LEAD ZUSAMMENFASSUNG ---\n\n` +
   `Name: ${lead.name || ''}\n` +
+  `Unternehmen / Branche: ${lead.unternehmen_branche || ''}\n` +
   `Telefon: ${lead.telefon || ''}\n` +
   `E-Mail: ${lead.email || ''}\n` +
   `PLZ / Ort: ${lead.plz_ort || ''}\n` +
   `Art der Anfrage: ${lead.art_der_anfrage || ''}\n` +
   `Projektbeschreibung: ${lead.projektbeschreibung || ''}\n` +
   `Dringlichkeit: ${lead.dringlichkeit || ''}\n` +
-  `Budget (falls genannt): ${lead.budget || ''}\n` +
-  `Wunschtermin: ${lead.wunschtermin || ''}\n\n` +
+  `Rückruf gewünscht: ${lead.rueckruf_wunsch || ''}\n\n` +
   `--------------------------`;
 
 const buildLeadPayload = (lead) => ({
   lead_complete: true,
   name: lead.name || '',
+  unternehmen_branche: lead.unternehmen_branche || '',
   telefon: lead.telefon || '',
   email: lead.email || '',
   plz_ort: lead.plz_ort || '',
   art_der_anfrage: lead.art_der_anfrage || '',
   projektbeschreibung: lead.projektbeschreibung || '',
   dringlichkeit: lead.dringlichkeit || '',
-  budget: lead.budget || '',
-  wunschtermin: lead.wunschtermin || ''
+  rueckruf_wunsch: lead.rueckruf_wunsch || ''
 });
 
 const sendLeadMail = async (lead) => {
