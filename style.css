@@ -500,6 +500,100 @@ a:hover {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.contact-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-6) 0;
+}
+
+.btn-cta-xl {
+  padding: 18px 52px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  min-width: 240px;
+}
+
+.contact-secondary-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.contact-secondary-hint a {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-secondary-hint a:hover {
+  color: var(--white);
+}
+
+.proof-grid-single {
+  grid-template-columns: minmax(0, 600px);
+  justify-content: center;
+}
+
+.proof-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4ade80;
+  margin-bottom: 4px;
+}
+
+.proof-live-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.6);
+  flex-shrink: 0;
+}
+
+.upcoming-section {
+  margin-top: var(--space-5);
+}
+
+.upcoming-label {
+  margin: 0 0 var(--space-3);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+}
+
+.upcoming-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.upcoming-card {
+  opacity: 0.72;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.upcoming-card h3 {
+  font-size: 1rem;
+}
+
+.upcoming-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
 .service-list {
   margin: var(--space-3) 0 0;
   padding: 0;
@@ -1003,22 +1097,7 @@ textarea {
   transform: translateY(-1px);
 }
 
-.social-link[aria-label="Instagram"] {
-  background: linear-gradient(45deg, #fcaf45, #fd1d1d, #e1306c, #833ab4, #5851db);
-  border-color: transparent;
-}
-
-.social-link[aria-label="Instagram"]:hover {
-  background: linear-gradient(45deg, #e09d3d, #e01818, #cc2a60, #7330a2, #4a44c5);
-  border-color: transparent;
-  box-shadow: 0 10px 24px rgba(131, 58, 180, 0.4);
-}
-
-.social-link[aria-label="Facebook"] {
-  background: #1877f2;
-  border-color: transparent;
-}
-
+.social-link[aria-label="Instagram"]:hover,
 .social-link[aria-label="Facebook"]:hover {
   background: #0d65d9;
   border-color: transparent;
