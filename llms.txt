@@ -1,0 +1,34 @@
+# AM Digital Services
+
+> Freelance-Agentur für Web- und App-Entwicklung in Bornheim, Deutschland.
+> Spezialisiert auf moderne Websites, iOS/Android Apps und digitale Lösungen
+> für kleine und mittlere Unternehmen. Inhaber: Amin Moukhmalji.
+
+## Leistungen
+
+- [Web-Entwicklung](https://am-digital-services.de/#leistungen): Responsive Websites mit klarer Struktur, Performance- und Mobile-Optimierung, Fokus auf Conversion und professioneller Markenwirkung
+- [App-Entwicklung](https://am-digital-services.de/#leistungen): Native und Cross-Platform Apps für iOS und Android mit konsistenter Nutzerführung und stabiler technischer Basis
+- [Digitale Lösungen](https://am-digital-services.de/#leistungen): Individuelle Workflows, Prozessautomatisierung und KI-Lösungen für kleine und mittlere Unternehmen
+
+## Projekte
+
+- [TodoFox – iOS App](https://apps.apple.com/us/app/todo-fox-aufgabenliste/id6755613811): Live-Produktivitäts-App im Apple App Store, entwickelt in Swift, Fokus auf Aufgabenerfassung unter 10 Sekunden
+- FamilyPilot: Familien-Organisations-App (iOS & Android) in Entwicklung
+- Betscope AI: Web-Dashboard für Sportwetten-Tracking mit KI-gestützter Einsatzempfehlung, in Entwicklung
+
+## Zusammenarbeit
+
+1. Briefing – Ziele, Anforderungen und Prioritäten definieren
+2. Umsetzung – Transparente Entwicklung mit regelmäßigen Updates
+3. Launch & Feinschliff – Veröffentlichung, QA und Optimierung nach dem Start
+
+## Kontakt & rechtliche Seiten
+
+- [Projektanfrage](https://am-digital-services.de/kontakt.html): Kontaktformular für direkte Anfragen
+- [Impressum](https://am-digital-services.de/impressum.html): Verantwortliche Person und Pflichtangaben
+- [Datenschutz](https://am-digital-services.de/datenschutz.html): Datenschutzerklärung gemäß DSGVO
+
+## Externe Profile
+
+- [Fiverr-Profil](https://de.fiverr.com/s/yvQPgQ6): Auftragsabwicklung über Fiverr verfügbar
+- [Instagram](https://www.instagram.com/am_digital_services): @am_digital_services
