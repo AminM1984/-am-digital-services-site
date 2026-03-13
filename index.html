@@ -184,12 +184,20 @@
       }
     }
   </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJJTB56KE5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MJJTB56KE5');
+    function loadGoogleAnalytics() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-MJJTB56KE5';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-MJJTB56KE5');
+    }
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      loadGoogleAnalytics();
+    }
   </script>
 </head>
 <body id="top">
@@ -553,6 +561,37 @@
       </div>
     </div>
   </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookie-banner" hidden>
+    <div class="cookie-banner-inner">
+      <p class="cookie-banner-text">
+        Diese Website verwendet Cookies – auch zur Analyse des Nutzerverhaltens.
+        <a href="datenschutz.html">Mehr erfahren</a>
+      </p>
+      <div class="cookie-banner-actions">
+        <button class="btn btn-secondary cookie-btn" id="cookie-reject">Nur notwendige</button>
+        <button class="btn btn-primary cookie-btn" id="cookie-accept">Alle akzeptieren</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      var consent = localStorage.getItem('cookie_consent');
+      if (!consent) {
+        document.getElementById('cookie-banner').hidden = false;
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'accepted');
+        document.getElementById('cookie-banner').hidden = true;
+        loadGoogleAnalytics();
+      });
+      document.getElementById('cookie-reject').addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'rejected');
+        document.getElementById('cookie-banner').hidden = true;
+      });
+    })();
+  </script>
 
   <script src="menu.js"></script>
   <script>

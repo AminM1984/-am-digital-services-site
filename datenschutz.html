@@ -23,12 +23,20 @@
   <meta name="twitter:description" content="Informationen zur Datenverarbeitung bei AM Digital Services." />
   <meta name="twitter:image" content="https://am-digital-services.de/assets/og-cover.svg" />
   <link rel="stylesheet" href="style.css" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJJTB56KE5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MJJTB56KE5');
+    function loadGoogleAnalytics() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-MJJTB56KE5';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-MJJTB56KE5');
+    }
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      loadGoogleAnalytics();
+    }
   </script>
 </head>
 <body>
@@ -131,6 +139,37 @@
             Das Hosting dieser Website erfolgt durch einen externen
             Dienstleister im Rahmen einer Auftragsverarbeitung gemäß Art. 28
             DSGVO.
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>Cookies und Einwilligungsverwaltung</h3>
+          <p>
+            Diese Website verwendet Cookies. Technisch notwendige Cookies werden ohne Einwilligung gesetzt. Für Analyse-Cookies (Google Analytics) holen wir Ihre Einwilligung über den Cookie-Banner ein. Ihre Wahl wird im Browser-Speicher (localStorage) gespeichert. Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie den Browser-Speicher leeren oder uns kontaktieren.
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>Google Analytics</h3>
+          <p>
+            Diese Website nutzt Google Analytics, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Google Analytics verwendet Cookies, um die Nutzung der Website zu analysieren. Die dadurch erzeugten Informationen (einschließlich Ihrer IP-Adresse) werden an Server von Google übertragen und gespeichert, ggf. auch in die USA.
+          </p>
+          <p style="margin-top: 10px;">
+            Google Analytics wird auf dieser Website nur nach Ihrer ausdrücklichen Einwilligung (Cookie-Banner) geladen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO. Weitere Informationen finden Sie unter <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>KI-gestützter Projektanfrage-Assistent</h3>
+          <p>
+            Diese Website bietet einen KI-gestützten Chat-Assistenten für Projektanfragen. Wenn Sie diesen nutzen, werden Ihre Eingaben (Projektbeschreibung, Kontaktdaten) an eine KI-API (Anthropic Claude) übermittelt, um Ihre Anfrage zu verarbeiten. Die Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage genutzt und nicht zu Werbezwecken verwendet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).
+          </p>
+        </article>
+
+        <article class="card reveal" style="margin-top: 20px;">
+          <h3>WhatsApp</h3>
+          <p>
+            Auf dieser Website befinden sich Links zu WhatsApp. Wenn Sie auf einen solchen Link klicken, werden Sie zu WhatsApp weitergeleitet. Dabei gelten die Datenschutzbestimmungen von Meta Platforms Ireland Ltd. Wir haben keinen Einfluss auf die Datenverarbeitung durch WhatsApp. Weitere Informationen unter <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">whatsapp.com/legal/privacy-policy</a>.
           </p>
         </article>
 
