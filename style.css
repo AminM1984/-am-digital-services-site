@@ -631,6 +631,15 @@ a:hover {
   margin-top: auto;
 }
 
+.proof-card-img {
+  display: block;
+  width: 100%;
+  border-radius: calc(var(--radius-md) - 4px);
+  object-fit: contain;
+  aspect-ratio: 4 / 3;
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .process-grid {
   counter-reset: step;
 }
@@ -1220,6 +1229,26 @@ textarea {
 
   .principles-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-panel {
+    padding: 16px;
+  }
+
+  .hero-list {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-list li {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 14px 8px;
+    font-size: 0.88rem;
+  }
+
+  .hero-list li:last-child {
+    border-bottom: none;
   }
 
   .lead-agent-overlay {
