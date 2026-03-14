@@ -22,13 +22,24 @@
   <meta name="twitter:title" content="Impressum – AM Digital Services" />
   <meta name="twitter:description" content="Rechtliche Angaben von AM Digital Services." />
   <meta name="twitter:image" content="https://am-digital-services.de/assets/og-cover.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="style.css" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJJTB56KE5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MJJTB56KE5');
+    function loadGoogleAnalytics() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-MJJTB56KE5';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-MJJTB56KE5');
+    }
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      loadGoogleAnalytics();
+    }
   </script>
 </head>
 <body>
@@ -79,6 +90,7 @@
             Buschgasse 36<br />
             53332 Bornheim<br />
             Deutschland<br />
+            Telefon: <a href="tel:+4915123035854">+49 1512 3035854</a><br />
             E-Mail: <a href="mailto:info@am-digital-services.de">info@am-digital-services.de</a>
           </p>
         </article>
@@ -97,7 +109,7 @@
         </article>
 
         <article class="card reveal" style="margin-top: 20px;">
-          <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+          <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
           <p>Amin Moukhmalji</p>
         </article>
       </div>
@@ -141,5 +153,36 @@
   </footer>
 
   <script src="menu.js"></script>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookie-banner" hidden>
+    <div class="cookie-banner-inner">
+      <p class="cookie-banner-text">
+        Diese Website verwendet Cookies – auch zur Analyse des Nutzerverhaltens.
+        <a href="datenschutz.html">Mehr erfahren</a>
+      </p>
+      <div class="cookie-banner-actions">
+        <button class="btn btn-secondary cookie-btn" id="cookie-reject">Nur notwendige</button>
+        <button class="btn btn-primary cookie-btn" id="cookie-accept">Alle akzeptieren</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      var consent = localStorage.getItem('cookie_consent');
+      if (!consent) {
+        document.getElementById('cookie-banner').hidden = false;
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'accepted');
+        document.getElementById('cookie-banner').hidden = true;
+        loadGoogleAnalytics();
+      });
+      document.getElementById('cookie-reject').addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'rejected');
+        document.getElementById('cookie-banner').hidden = true;
+      });
+    })();
+  </script>
 </body>
 </html>
