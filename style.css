@@ -818,6 +818,10 @@ a:hover {
   justify-content: center;
 }
 
+.proof-grid-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .proof-card {
   gap: 14px;
   border-radius: var(--radius-lg);
@@ -1787,6 +1791,7 @@ textarea {
   .highlight-grid,
   .service-grid,
   .proof-grid,
+  .proof-grid-two,
   .contact-grid {
     grid-template-columns: 1fr;
   }
